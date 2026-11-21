@@ -1,11 +1,3 @@
-// Deployment script — works on the in-process Hardhat network, on a local
-// node (`npx hardhat node`, --network localhost) and on Sepolia
-// (--network sepolia) with no changes.
-//
-// Usage:
-//   npx hardhat run scripts/deploy.js                    (in-process test network)
-//   npx hardhat run scripts/deploy.js --network localhost (local node, Chain ID 31337)
-//   npx hardhat run scripts/deploy.js --network sepolia   (testnet)
 const hre = require("hardhat");
 
 async function main() {

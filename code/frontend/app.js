@@ -1,21 +1,8 @@
-// Decentralized Voting DApp — frontend logic (ethers.js v6)
-//
-// SETUP (see README.md):
-// 1. Start the local node:        npx hardhat node
-// 2. Deploy the contract:         npx hardhat run scripts/deploy.js --network localhost
-// 3. Paste the deployed Voting contract address below.
-// 4. In MetaMask, add the Hardhat network (RPC http://127.0.0.1:8545,
-//    Chain ID 31337) and import one of the node's pre-funded test accounts.
-//    For Sepolia instead: deploy with --network sepolia, set
-//    EXPECTED_CHAIN_ID to 11155111n and paste the Sepolia address.
-
-// ↓↓↓ REPLACE with the Voting address printed by the deploy script ↓↓↓
-const CONTRACT_ADDRESS = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"; // Voting address from the verified local-node deployment (see test-results/deployment-localhost-log.txt) — re-check after every fresh deploy
+const CONTRACT_ADDRESS = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
 const EXPECTED_CHAIN_ID = 31337n; // Hardhat local node. Sepolia = 11155111n
 const EXPECTED_NETWORK_NAME = "Hardhat Local (Chain ID 31337)";
 
-// ABI of Voting.sol — copied from the compiled artifact
-// (artifacts/contracts/Voting.sol/Voting.json -> "abi") after `npx hardhat compile`.
+
 const CONTRACT_ABI = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
@@ -191,7 +178,7 @@ async function connectWallet() {
 
 async function loadCandidates() {
   try {
-    // All vote counts come from the blockchain — nothing is hardcoded.
+
     const candidates = await contract.getAllCandidates();
     const alreadyVoted = await contract.hasVoted(userAddress);
     voterStatus.textContent = alreadyVoted

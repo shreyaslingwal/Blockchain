@@ -1,8 +1,3 @@
-/* 
-  Professional Academic & Corporate Theme
-  Warm Cream / Ivory Background with Slate Blue & Warm Orange Accents
-*/
-
 :root {
   /* Warm cream & white base surfaces */
   --bg-page: #faf8f5;
@@ -206,7 +201,8 @@ h1 {
   margin-bottom: 16px;
 }
 
-button, .btn {
+button,
+.btn {
   font-family: inherit;
   font-size: 0.92rem;
   font-weight: 600;
@@ -220,7 +216,8 @@ button, .btn {
   justify-content: center;
 }
 
-.btn-primary, button:not(.secondary):not(.btn-outline) {
+.btn-primary,
+button:not(.secondary):not(.btn-outline) {
   background-color: var(--blue-primary);
   color: #ffffff;
   box-shadow: var(--shadow-sm);
@@ -232,7 +229,8 @@ button:not(.secondary):not(.btn-outline):hover:not(:disabled) {
   box-shadow: 0 2px 6px rgba(29, 78, 216, 0.25);
 }
 
-button:disabled, .btn:disabled {
+button:disabled,
+.btn:disabled {
   background-color: #f1f5f9;
   color: #94a3b8;
   border: 1px solid #e2e8f0;
@@ -240,7 +238,8 @@ button:disabled, .btn:disabled {
   box-shadow: none;
 }
 
-.btn-secondary, button.secondary {
+.btn-secondary,
+button.secondary {
   background-color: #ffffff;
   color: var(--text-main);
   border: 1px solid var(--border-light);
@@ -288,7 +287,8 @@ button.secondary:hover:not(:disabled) {
   min-width: 70px;
 }
 
-.meta-value, .info {
+.meta-value,
+.info {
   color: var(--text-main);
   word-break: break-all;
 }
@@ -441,11 +441,13 @@ button.secondary:hover:not(:disabled) {
   word-break: break-all;
 }
 
-.tx-details:empty, #txInfo:empty {
+.tx-details:empty,
+#txInfo:empty {
   display: none;
 }
 
-.tx-details:not(:empty), #txInfo:not(:empty) {
+.tx-details:not(:empty),
+#txInfo:not(:empty) {
   margin-top: 10px;
   padding: 10px 14px;
   background-color: var(--bg-page);

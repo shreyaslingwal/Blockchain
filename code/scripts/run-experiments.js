@@ -1,7 +1,3 @@
-// Part 6 experiments, run against a freshly deployed Voting contract.
-// Run with:  npx hardhat run scripts/run-experiments.js
-// (in-process Hardhat network: Chain ID 31337, 20 pre-funded test accounts,
-//  no real cryptocurrency involved.)
 const hre = require("hardhat");
 
 async function showResults(voting, label) {
@@ -30,7 +26,7 @@ async function main() {
   console.log("Deployment tx hash:", voting.deploymentTransaction().hash);
   await showResults(voting, "(before any votes)");
 
-  // ---------- Experiment A: successful voting ----------
+  // Experiment A: successful voting
   console.log("\n--- Experiment A: Successful voting (Account 1 -> Candidate 1) ---");
   const txA = await voting.connect(deployer).vote(1);
   console.log("Transaction submitted, hash:", txA.hash);
@@ -53,7 +49,7 @@ async function main() {
   console.log("hasVoted(Account 1):", await voting.hasVoted(deployer.address));
   await showResults(voting, "(after Experiment A — Candidate 1 increased by 1)");
 
-  // ---------- Experiment B: duplicate voting ----------
+  //Experiment B: duplicate voting
   console.log("\n--- Experiment B: Duplicate voting (same Account 1 tries again) ---");
   try {
     const txB = await voting.connect(deployer).vote(0);
@@ -65,7 +61,7 @@ async function main() {
   }
   await showResults(voting, "(after Experiment B — unchanged, no count increased)");
 
-  // ---------- Experiment C: voting from another account ----------
+  // Experiment C: voting from another account 
   console.log("\n--- Experiment C: Voting from a second account (Account 2 -> Candidate 1) ---");
   const txC = await voting.connect(voter2).vote(1);
   const receiptC = await txC.wait();
@@ -75,7 +71,7 @@ async function main() {
   console.log("hasVoted(Account 2):", await voting.hasVoted(voter2.address));
   await showResults(voting, "(after Experiment C — Candidate 1 increased by 1 again)");
 
-  // ---------- Experiment D: invalid candidate ----------
+  //Experiment D: invalid candidate 
   const [, , voter3] = await hre.ethers.getSigners();
   console.log("\n--- Experiment D: Invalid candidate id (fresh Account 3 -> Candidate 99) ---");
   console.log("Account 3:", voter3.address);
