@@ -15,6 +15,10 @@ __pycache__/
 .env
 .env.*
 
+# Documents & Readme
+*.docx
+
+
 # OS and IDE files
 .DS_Store
 Thumbs.db

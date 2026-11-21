@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Hardhat build outputs
+artifacts/
+cache/
+
+# Python virtual environment & cache
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Environment variables & secrets
+.env
+.env.*
+
+# Documents & Readme
+*.docx
+
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.vscode/
