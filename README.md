@@ -1,10 +1,10 @@
 # Blockchain Technology — Practical Lab Submission
 
-**Course:** Blockchain Technology — Practical Lab, Department of Computer Science, School of Technology, Doon University
-**Student:** Shreyas Lingwal
-**Assignment:** Introduction to Ethereum, Smart Contracts and DApp Development
+**Course:** Blockchain Technology — Practical Lab, Department of Computer Science, School of Technology, Doon University  
+**Student:** Shreyas Lingwal  
+**Assignment:** Introduction to Ethereum, Smart Contracts and DApp Development  
 
-## Selected network
+## Selected Network
 
 | Item | Value |
 | --- | --- |
@@ -16,101 +16,121 @@
 | Solidity version | 0.8.20 |
 | Frontend library | ethers.js v6 (CDN) |
 
-## Project layout
+## Project Layout
 
-```
-contracts/SimpleStorage.sol   Part 2/3 storage contract
-contracts/Voting.sol          Part 4 voting contract
-frontend/index.html           DApp page
-frontend/style.css            DApp styling
-frontend/app.js               Wallet connection, voting, error handling (ethers.js)
-scripts/deploy.js             Deploys both contracts and prints addresses/tx hashes/gas
-scripts/run-experiments.js    Part 6 experiments A–D with full logs
-test-results/                 Compilation, deployment and experiment logs (evidence)
-screenshots/                  Screenshots of compilation, deployment, voting experiments and the DApp interface (embedded in the report)
-hardhat.config.js             Network configuration (localhost Chain ID 31337, Sepolia stub)
-Lab_Report.docx               Full written report: answers, observations, transaction details
+```text
+code/
+├── contracts/
+│   ├── SimpleStorage.sol   Part 2/3 storage contract
+│   └── Voting.sol          Part 4 voting contract
+├── frontend/
+│   ├── index.html          DApp page
+│   ├── style.css           DApp styling
+│   └── app.js              Wallet connection, voting, error handling (ethers.js v6)
+├── scripts/
+│   ├── deploy.js           Deploys contracts, prints addresses, tx hashes and gas
+│   └── run-experiments.js  Part 6 experiments A–D with full output logs
+├── screenshots/            Execution evidence screenshots (1-10)
+├── hardhat.config.js       Network configuration (localhost Chain ID 31337)
+├── package.json            Dependencies and project scripts
+└── package-lock.json       Locked dependency tree
 ```
 
 ## Prerequisites
 
 - Node.js 18+ and npm
-- MetaMask browser extension (for the DApp demo)
-- No real ETH is needed or used anywhere in this project.
+- MetaMask browser extension (for DApp interaction)
+- No real ETH required; test accounts with 10,000 test ETH are provided by Hardhat.
 
-## Step 1 — Install and compile
+## Step 1 — Install Dependencies and Compile
 
 ```bash
+cd code
 npm install
 npx hardhat compile
 ```
 
 Expected output: `Compiled 2 Solidity files successfully (evm target: paris).`
 
-## Step 2 — Start the local blockchain (terminal 1)
+![Compilation Output](code/screenshots/1-compilation.png)
+
+## Step 2 — Start Local Blockchain (Terminal 1)
 
 ```bash
+cd code
 npx hardhat node
 ```
 
-This starts a local Ethereum-compatible chain (Chain ID 31337) with 20
-pre-funded test accounts of 10,000 test ETH each. Leave it running.
+This starts a local Ethereum-compatible node (Chain ID 31337) with 20 pre-funded test accounts containing 10,000 test ETH each. Keep this terminal running.
 
-## Step 3 — Deploy the contracts (terminal 2)
+## Step 3 — Deploy Contracts (Terminal 2)
 
 ```bash
+cd code
 npx hardhat run scripts/deploy.js --network localhost
 ```
 
-The script deploys SimpleStorage with initial value 42, calls
-`setNumber(100)`, then deploys Voting with three candidates
-(Alice Sharma, Rohan Verma, Priya Nair). It prints both contract addresses,
-deployment transaction hashes and gas used. Full output of a verified run is
-in `test-results/deployment-localhost-log.txt`.
+The script deploys `SimpleStorage` with initial value 42, calls `setNumber(100)`, and deploys `Voting` with three candidates (Alice Sharma, Rohan Verma, Priya Nair). It prints contract addresses, transaction hashes, and gas consumed.
 
-## Step 4 — Run the Part 6 experiments (optional, terminal 2)
+![Deployment and SimpleStorage](code/screenshots/2-deployment-and-storage.png)
+
+## Step 4 — Run Experiments A–D (Terminal 2)
 
 ```bash
+cd code
 npx hardhat run scripts/run-experiments.js
 ```
 
-Runs Experiment A (successful vote), B (duplicate vote — reverts with
-"You have already voted"), C (vote from a second account — accepted) and
-D (invalid candidate id 99 — reverts with "Invalid candidate ID"), printing
-transaction hashes, gas used, events and vote counts after each step.
-Verified output: `test-results/experiments-log.txt`.
+This script verifies contract rules through automated experiments:
+- **Experiment A:** Successful voting transaction from Account 1.
+- **Experiment B:** Duplicate vote attempt from Account 1 (rejected by `require(!voted[msg.sender])`).
+- **Experiment C:** Successful voting from a fresh account (Account 2).
+- **Experiment D:** Invalid candidate ID (rejected by `require(_candidateId < candidates.length)`).
 
-## Step 5 — Run the DApp
+![Voting Success and Duplicate Rejection](code/screenshots/3-voting-success-and-duplicate-rejection.png)
 
-1. Add the local network to MetaMask: **Settings → Networks → Add network** —
-   Network name `Hardhat Local`, RPC URL `http://127.0.0.1:8545`,
-   Chain ID `31337`, Currency symbol `ETH`.
-2. Import a test account: copy a private key printed by `npx hardhat node`
-   in terminal 1 and use **MetaMask → Import account**. 
-3. Serve the frontend:
+![Second Account Voting and Invalid Candidate ID Rejection](code/screenshots/4-voting-second-account-and-invalid-candidate.png)
+
+## Step 5 — Launch and Interact with the DApp
+
+1. Add the local network to MetaMask:
+   - **Network Name:** `Hardhat Local`
+   - **RPC URL:** `http://127.0.0.1:8545`
+   - **Chain ID:** `31337`
+   - **Currency Symbol:** `ETH`
+2. Import a test account using any private key displayed by `npx hardhat node`.
+3. Start the local web server:
 
    ```bash
-   cd frontend
-   python3 -m http.server 8000
+   cd code/frontend
+   python -m http.server 8000
    ```
 
-4. Open `http://localhost:8000` in the browser with MetaMask.
-5. Click **Connect MetaMask Wallet** — the account address and network are
-   displayed, candidates and vote counts are loaded from the contract.
-6. Click **Vote** next to a candidate and confirm in MetaMask. The status
-   area shows the transaction hash, confirmation block and gas used, and the
-   results refresh from the contract. Trying to vote again shows
-   "You have already voted" and the button stays disabled for that address.
-   Switch to a second imported test account in MetaMask to vote again.
+4. Open `http://localhost:8000` in your browser.
+5. Click **Connect MetaMask Wallet** to link your account.
 
-## Alternative: deploy with Remix IDE instead of Hardhat
+![DApp Interface](code/screenshots/5-dapp-interface.png)
 
-1. Open https://remix.ethereum.org, create `SimpleStorage.sol` and
-   `Voting.sol` with the source in `contracts/`.
-2. In **Solidity Compiler**, select 0.8.20 and compile both files.
-3. In **Deploy & Run Transactions**, choose environment **Injected Provider –
-   MetaMask** (with MetaMask on the Hardhat Local network above) or
-   **Remix VM** for a quick in-browser test.
-4. Deploy SimpleStorage with initial value `42`; deploy Voting (no arguments).
-5. Copy the deployed Voting address into `frontend/app.js`.
+6. Confirm the wallet connection in MetaMask:
 
+![MetaMask Wallet Connection](code/screenshots/6-metamask-wallet.png)
+
+7. Select a candidate and click **Vote**. MetaMask prompts for transaction confirmation. Once mined, candidate tallies and voter status update live on-chain:
+
+![DApp Connected After Voting](code/screenshots/7-dapp-connected-after-voting.png)
+
+## Alternative: Deployment via Remix IDE
+
+1. Open [Remix IDE](https://remix.ethereum.org).
+2. Create `SimpleStorage.sol` and `Voting.sol` under the `contracts/` directory in Remix using the source code in `code/contracts/`.
+3. In **Solidity Compiler**, select version `0.8.20` and compile both contracts.
+
+![Remix Compilation](code/screenshots/8-remix-compilation.png)
+
+4. In **Deploy & Run Transactions**, choose environment **Injected Provider - MetaMask** (connected to Hardhat Local network) or **Remix VM**. Deploy `SimpleStorage` with initial value `42`.
+
+![Remix SimpleStorage Deploy](code/screenshots/9-remix-simplestorage-deploy.png)
+
+5. Deploy `Voting` and test candidate queries and vote casting directly through Remix's contract interface.
+
+![Remix Voting Interaction](code/screenshots/10-remix-voting.png)
