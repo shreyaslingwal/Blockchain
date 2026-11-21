@@ -16,11 +16,6 @@
 | Solidity version | 0.8.20 |
 | Frontend library | ethers.js v6 (CDN) |
 
-> Contract addresses are deterministic on a fresh Hardhat node when the deploy
-> script runs first: SimpleStorage deploys first, Voting second. If you deploy
-> in a different order or on Sepolia, copy the new Voting address printed by
-> the deploy script into `frontend/app.js` (`CONTRACT_ADDRESS`).
-
 ## Project layout
 
 ```
@@ -91,9 +86,7 @@ Verified output: `test-results/experiments-log.txt`.
    Network name `Hardhat Local`, RPC URL `http://127.0.0.1:8545`,
    Chain ID `31337`, Currency symbol `ETH`.
 2. Import a test account: copy a private key printed by `npx hardhat node`
-   in terminal 1 and use **MetaMask → Import account**. (These are public,
-   well-known *test-only* keys for the local node — never use them anywhere
-   else, and never submit real wallet credentials with this assignment.)
+   in terminal 1 and use **MetaMask → Import account**. 
 3. Serve the frontend:
 
    ```bash
@@ -121,10 +114,3 @@ Verified output: `test-results/experiments-log.txt`.
 4. Deploy SimpleStorage with initial value `42`; deploy Voting (no arguments).
 5. Copy the deployed Voting address into `frontend/app.js`.
 
-## Alternative network: Sepolia testnet
-
-The same code deploys unchanged to Sepolia (Chain ID 11155111): uncomment the
-`sepolia` section in `hardhat.config.js`, fund the account from a Sepolia
-faucet, deploy with `--network sepolia`, and set `EXPECTED_CHAIN_ID` to
-`11155111n` in `frontend/app.js`. Nothing in this submission uses Mainnet or
-real cryptocurrency.
