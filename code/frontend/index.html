@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decentralized Voting System — Blockchain Lab</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- ethers.js v6 (browser build) -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+</head>
+
+<body>
+  <main class="container">
+    <header class="page-header">
+      <h1>Decentralized Voting System</h1>
+      <p class="subtitle">Powered by Ethereum smart contracts</p>
+    </header>
+
+    <!-- Wallet Section -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-title-group">
+          <h2>Wallet Connection</h2>
+          <span class="badge badge-blue">Web3 Provider</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="btn-group">
+          <button id="connectBtn" class="btn btn-primary">Connect MetaMask Wallet</button>
+          <button id="switchBtn" class="btn btn-outline" style="display:none">Switch to Hardhat Local Network</button>
+        </div>
+        <div class="meta-panel">
+          <div class="meta-item">
+            <span class="meta-label">Account:</span>
+            <span id="accountInfo" class="info meta-value">Not connected</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Network:</span>
+            <span id="networkInfo" class="info meta-value">Waiting for wallet connection</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Candidates Section -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-title-group">
+          <h2>Official Ballot &amp; Candidates</h2>
+          <span class="badge badge-orange">On-Chain State</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div id="voterStatus" class="notice-callout"></div>
+        <div id="candidateList" class="candidates">
+          <div class="empty-state">
+            <p class="empty-text">Connect your MetaMask wallet above to retrieve verified candidates from the smart
+              contract.</p>
+          </div>
+        </div>
+        <div class="action-footer">
+          <button id="refreshBtn" class="btn btn-secondary" disabled>Refresh Results</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Status Section -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-title-group">
+          <h2>Transaction &amp; System Status</h2>
+          <span class="badge badge-slate">Activity Log</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div id="statusMessage" class="status">Waiting for user interaction...</div>
+        <div id="txInfo" class="tx-details"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

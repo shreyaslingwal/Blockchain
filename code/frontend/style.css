@@ -1,0 +1,465 @@
+/* 
+  Professional Academic & Corporate Theme
+  Warm Cream / Ivory Background with Slate Blue & Warm Orange Accents
+*/
+
+:root {
+  /* Warm cream & white base surfaces */
+  --bg-page: #faf8f5;
+  --bg-card: #ffffff;
+  --bg-subtle: #f4f1ea;
+  --bg-hover: #f7f5f0;
+
+  /* Typography */
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --text-heading: #0f172a;
+
+  /* Primary Deep Navy / Slate Blue Tone */
+  --blue-primary: #1d4ed8;
+  --blue-hover: #1e40af;
+  --blue-soft-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --blue-text: #1e40af;
+
+  /* Warm Orange Accent Tone */
+  --orange-primary: #c2410c;
+  --orange-hover: #9a3412;
+  --orange-soft-bg: #fff7ed;
+  --orange-border: #fed7aa;
+  --orange-text: #9a3412;
+
+  /* Structural Borders & Warm Grays */
+  --border-light: #e7e3da;
+  --border-subtle: #f0ede6;
+
+  /* Status Feedback */
+  --status-neutral-bg: #f8fafc;
+  --status-neutral-border: #e2e8f0;
+  --status-neutral-text: #475569;
+
+  --status-success-bg: #f0fdf4;
+  --status-success-border: #bbf7d0;
+  --status-success-text: #166534;
+
+  --status-error-bg: #fef2f2;
+  --status-error-border: #fecaca;
+  --status-error-text: #991b1b;
+
+  --status-pending-bg: #fffbeb;
+  --status-pending-border: #fde68a;
+  --status-pending-text: #92400e;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Institutional top banner */
+.top-nav-strip {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+  padding: 10px 24px;
+}
+
+.nav-content {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.nav-brand {
+  font-weight: 600;
+  color: var(--blue-text);
+  letter-spacing: 0.02em;
+}
+
+.nav-institution {
+  color: var(--text-muted);
+}
+
+/* Container */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+}
+
+/* Page Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.institution-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-text);
+  background: var(--blue-soft-bg);
+  border: 1px solid var(--blue-border);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0 auto;
+  max-width: 580px;
+}
+
+/* Card Component */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  background-color: #ffffff;
+}
+
+.card-title-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  letter-spacing: -0.01em;
+}
+
+.badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.badge-blue {
+  background: var(--blue-soft-bg);
+  color: var(--blue-text);
+  border: 1px solid var(--blue-border);
+}
+
+.badge-orange {
+  background: var(--orange-soft-bg);
+  color: var(--orange-text);
+  border: 1px solid var(--orange-border);
+}
+
+.badge-slate {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Button Styles */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+button, .btn {
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary, button:not(.secondary):not(.btn-outline) {
+  background-color: var(--blue-primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover:not(:disabled),
+button:not(.secondary):not(.btn-outline):hover:not(:disabled) {
+  background-color: var(--blue-hover);
+  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.25);
+}
+
+button:disabled, .btn:disabled {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  border: 1px solid #e2e8f0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary, button.secondary {
+  background-color: #ffffff;
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover:not(:disabled),
+button.secondary:hover:not(:disabled) {
+  background-color: var(--bg-hover);
+  border-color: #cbd5e1;
+  color: var(--text-heading);
+}
+
+.btn-outline {
+  background-color: #ffffff;
+  color: var(--blue-text);
+  border: 1px solid var(--blue-border);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--blue-soft-bg);
+}
+
+/* Metadata Panel */
+.meta-panel {
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.88rem;
+}
+
+.meta-label {
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 70px;
+}
+
+.meta-value, .info {
+  color: var(--text-main);
+  word-break: break-all;
+}
+
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.84rem;
+}
+
+/* Notice box */
+.notice-callout {
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.notice-callout:empty {
+  display: none;
+}
+
+.notice-callout:not(:empty) {
+  background-color: var(--orange-soft-bg);
+  border: 1px solid var(--orange-border);
+  color: var(--orange-text);
+  font-weight: 500;
+}
+
+/* Candidate List */
+.candidates {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.empty-state {
+  padding: 24px 16px;
+  text-align: center;
+  background-color: var(--bg-page);
+  border: 1px dashed var(--border-light);
+  border-radius: 8px;
+}
+
+.empty-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.candidate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 14px 18px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.candidate:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.candidate .name {
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--text-heading);
+}
+
+.candidate .votes {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--orange-text);
+  background-color: var(--orange-soft-bg);
+  border: 1px solid var(--orange-border);
+  padding: 2px 10px;
+  border-radius: 9999px;
+}
+
+/* Specific styling for the candidate vote button */
+.candidate button {
+  background-color: var(--orange-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(194, 65, 12, 0.2);
+  transition: all 0.15s ease;
+}
+
+.candidate button:hover:not(:disabled) {
+  background-color: var(--orange-hover);
+  box-shadow: 0 3px 8px rgba(194, 65, 12, 0.3);
+}
+
+.candidate button:disabled {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  border: 1px solid #e2e8f0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.action-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Status Message and Transaction Details */
+.status {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  background-color: var(--status-neutral-bg);
+  border: 1px solid var(--status-neutral-border);
+  color: var(--status-neutral-text);
+  transition: all 0.2s ease;
+}
+
+.status.success {
+  background-color: var(--status-success-bg);
+  border-color: var(--status-success-border);
+  color: var(--status-success-text);
+}
+
+.status.error {
+  background-color: var(--status-error-bg);
+  border-color: var(--status-error-border);
+  color: var(--status-error-text);
+}
+
+.status.pending {
+  background-color: var(--status-pending-bg);
+  border-color: var(--status-pending-border);
+  color: var(--status-pending-text);
+}
+
+.tx-details {
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.tx-details:empty, #txInfo:empty {
+  display: none;
+}
+
+.tx-details:not(:empty), #txInfo:not(:empty) {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background-color: var(--bg-page);
+  border: 1px dashed var(--border-light);
+  border-radius: 8px;
+  color: var(--text-muted);
+}
+
+/* Footer */
+.page-footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-light);
+  padding-top: 20px;
+}
